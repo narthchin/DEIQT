@@ -1,0 +1,32 @@
+DATA:
+  DATASET: livec
+  BATCH_SIZE: 16
+  PATCH_NUM: 10
+  CROP_SIZE: (224,224)
+SET:
+  COUNT: 1162
+MODEL:
+  TYPE: deiqt
+  NAME: production
+  DROP_PATH_RATE: 0.0
+  VIT:
+    PATCH_SIZE: 16
+    EMBED_DIM: 384
+    DEPTH: 12
+    NUM_HEADS: 6
+    MLP_RATIO: 4
+    QKV_BIAS: True
+    # Download the pretrained weights and input the path here
+    PRETRAINED: True
+    PRETRAINED_MODEL_PATH:
+TRAIN:
+  EPOCHS: 9
+  WARMUP_EPOCHS: 3
+  WEIGHT_DECAY: 0.05
+  BASE_LR: 2.0e-4
+  WARMUP_LR: 2.0e-7
+  MIN_LR: 2.0e-7
+  LR_SCHEDULER:
+    NAME: step
+    DECAY_EPOCHS: 3
+DISABLE_SAVE: True
